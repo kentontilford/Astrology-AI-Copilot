@@ -3,7 +3,7 @@
  * This provides fake data instead of actual astronomical calculations
  */
 
-import { ZodiacSigns, Houses, PlanetPosition, Planets, Aspect, AspectType } from 'shared/src/types/astrology';
+import { ZodiacSigns, Houses, PlanetPosition, Planets, Aspect, AspectType } from '../../types/astrology';
 
 // Mock planet positions
 export const calculatePlanetPositions = (birthDate: string, birthTime: string, latitude: number, longitude: number): PlanetPosition[] => {

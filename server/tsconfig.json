@@ -1,11 +1,31 @@
 {
-  "extends": "../tsconfig.base.json",
   "compilerOptions": {
+    "target": "es2020",
+    "module": "commonjs",
+    "lib": ["DOM", "ESNext"],
+    "declaration": false,
+    "strict": false,
+    "noImplicitAny": false,
+    "strictNullChecks": false,
+    "noImplicitThis": false,
+    "alwaysStrict": false,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "noImplicitReturns": false,
+    "noFallthroughCasesInSwitch": false,
+    "moduleResolution": "node",
+    "baseUrl": ".",
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": false,
+    "resolveJsonModule": true,
     "outDir": "dist",
-    "rootDir": "src"
+    "rootDir": "src",
+    "noEmitOnError": false
   },
   "include": ["src/**/*"],
-  "references": [
-    { "path": "../shared" }
-  ]
+  "exclude": ["node_modules", "dist"]
 }
