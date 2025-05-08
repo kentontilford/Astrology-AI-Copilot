@@ -1,14 +1,22 @@
 import User from './User';
+import BirthProfile from './BirthProfile';
 
 // Export all models
 export {
-  User
+  User,
+  BirthProfile
 };
 
 // Set up associations
 export const initializeAssociations = () => {
-  // As we add more models, we'll define the relationships here
-  // For example:
-  // User.hasMany(BirthProfile);
-  // BirthProfile.belongsTo(User);
+  // User to BirthProfile relationship
+  User.hasMany(BirthProfile, {
+    foreignKey: 'userId',
+    as: 'birthProfiles'
+  });
+  
+  BirthProfile.belongsTo(User, {
+    foreignKey: 'userId',
+    as: 'user'
+  });
 };

@@ -5,6 +5,7 @@ import { Metadata } from 'next';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import { AuthProvider } from '../hooks/useAuth';
+import { ProfilesProvider } from '../hooks/useProfiles';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -21,17 +22,19 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <AuthProvider>
-        <html lang="en">
-          <body className={inter.className}>
-            <div className="flex flex-col min-h-screen">
-              <Header />
-              <main className="flex-grow">
-                {children}
-              </main>
-              <Footer />
-            </div>
-          </body>
-        </html>
+        <ProfilesProvider>
+          <html lang="en">
+            <body className={inter.className}>
+              <div className="flex flex-col min-h-screen">
+                <Header />
+                <main className="flex-grow">
+                  {children}
+                </main>
+                <Footer />
+              </div>
+            </body>
+          </html>
+        </ProfilesProvider>
       </AuthProvider>
     </ClerkProvider>
   );
