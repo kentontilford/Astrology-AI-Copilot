@@ -1,0 +1,30 @@
+{
+  "name": "astrology-ai-copilot",
+  "version": "0.1.0",
+  "private": true,
+  "workspaces": [
+    "client",
+    "server",
+    "shared"
+  ],
+  "scripts": {
+    "dev": "concurrently \"npm run dev:client\" \"npm run dev:server\"",
+    "dev:client": "npm run dev --workspace=client",
+    "dev:server": "npm run dev --workspace=server",
+    "build": "npm run build --workspaces",
+    "start": "concurrently \"npm run start --workspace=client\" \"npm run start --workspace=server\"",
+    "lint": "npm run lint --workspaces",
+    "test": "npm run test --workspaces",
+    "setup": "bash scripts/setup.sh",
+    "install:all": "concurrently \"npm install --workspace=client\" \"npm install --workspace=server\" \"npm install --workspace=shared\"",
+    "docker:up": "docker-compose up -d",
+    "docker:down": "docker-compose down",
+    "docker:all": "docker-compose up -d",
+    "deploy:server": "cd server && npm run build && npm run start",
+    "deploy:client": "cd client && npm run build && npm run start"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.0",
+    "prettier": "^3.1.0"
+  }
+}

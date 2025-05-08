@@ -1,0 +1,32 @@
+FROM node:20-alpine
+
+# Install dependencies required for builds
+RUN apk add --no-cache python3 python3-dev py3-pip make g++ gcc
+RUN pip3 install setuptools
+
+# Set up directories
+WORKDIR /app
+
+# Copy package.json files
+COPY package.json .
+COPY client/package.json ./client/
+COPY shared/package.json ./shared/
+
+# Install shared dependencies
+WORKDIR /app/shared
+RUN npm install --legacy-peer-deps
+
+# Build shared package
+COPY shared/ ./
+RUN npm run build
+
+# Install client dependencies
+WORKDIR /app/client
+RUN npm install --legacy-peer-deps
+
+# Copy client code
+COPY client/ ./
+
+EXPOSE 3000
+
+CMD ["npm", "run", "dev"]
