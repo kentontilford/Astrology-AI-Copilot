@@ -5,3 +5,10 @@ npm-debug.log
 .env.test.local
 .env.production.local
 dist
+.git
+*.md
+Dockerfile.dev
+Dockerfile.railway
+railway-build.sh
+tsconfig.railway.json
+src

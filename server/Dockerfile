@@ -2,20 +2,21 @@ FROM node:18-alpine
 
 WORKDIR /app
 
-# Copy simplified package.json for Railway
+# Copy package files
 COPY package.railway.json ./package.json
 
 # Install dependencies
 RUN npm install
 
-# Copy simplified index.js
+# Copy application files
 COPY index.js ./
+COPY start.sh ./
 
-# Copy .env
-COPY .env ./
+# Make startup script executable
+RUN chmod +x ./start.sh
 
 # Expose port
 EXPOSE 3001
 
-# Start the server
-CMD ["npm", "start"]
+# Start the server using the startup script
+CMD ["./start.sh"]
