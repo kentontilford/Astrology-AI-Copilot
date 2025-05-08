@@ -2,20 +2,17 @@ FROM node:18-alpine
 
 WORKDIR /app
 
-# Copy package files
-COPY package*.json ./
+# Copy simplified package.json for Railway
+COPY package.railway.json ./package.json
 
 # Install dependencies
 RUN npm install
 
-# Copy source files
-COPY . .
+# Copy simplified index.js
+COPY index.js ./
 
-# Make sure shared types are available
-COPY shared-types.ts src/shared-types.ts
-
-# Build the app
-RUN npm run build
+# Copy .env
+COPY .env ./
 
 # Expose port
 EXPOSE 3001
